@@ -100,6 +100,12 @@ export default function ({}: ThemeVariables) {
     fullHeight: {
       height: '100%',
     },
+    width250:{
+      width:250
+    },
+    height50:{
+      height:50
+    },
     /* Operation Layout */
     mirror: {
       transform: [{ scaleX: -1 }],
