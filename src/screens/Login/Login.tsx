@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { SafeAreaView, View, TextInput, TouchableOpacity, Text } from 'react-native';
-import { useTheme } from '../../hooks';
+import { loginSuccess, loginFailed } from '../../store/auth/auth'
 
-const ScreenLogin = () => {
-  const { Layout, Gutters, Fonts } = useTheme();
+import { useTheme } from '../../hooks';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../screens/Home/interface'
+
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
+const Login = ({ navigation }: Props) => {
+  const dispatch = useDispatch();
+  const { Layout, Gutters } = useTheme();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log("esto se logeo")
+  const handleSubmit = () => {
+    console.log("adsadas")
+    // Aquí iría la lógica para hacer la petición al servidor y verificar las credenciales del usuario
+    // En este ejemplo, simularemos que el inicio de sesión es exitoso si el usuario es "admin" y la contraseña es "password"
+    if (username === 'Admin' && password === 'password') {
+      dispatch(loginSuccess({ username }));
+      navigation.navigate('Home')
+    } else {
+      dispatch(loginFailed('Invalid username or password'));
+    }
   };
 
   return (
@@ -48,7 +67,7 @@ const ScreenLogin = () => {
               borderRadius: 5,
             },
           ]}
-          onPress={handleLogin}
+          onPress={handleSubmit}
         >
           <Text style={[{ color: '#FFFFFF' }]}>Login</Text>
         </TouchableOpacity>
@@ -57,4 +76,4 @@ const ScreenLogin = () => {
   );
 };
 
-export default ScreenLogin;
+export default Login;
