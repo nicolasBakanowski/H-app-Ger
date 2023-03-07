@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SafeAreaView, View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { loginSuccess, loginFailed } from '../../store/auth/auth'
 
@@ -14,12 +14,12 @@ type Props = {
 };
 const Login = ({ navigation }: Props) => {
   const dispatch = useDispatch();
+
   const { Layout, Gutters } = useTheme();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    console.log("adsadas")
     // Aquí iría la lógica para hacer la petición al servidor y verificar las credenciales del usuario
     // En este ejemplo, simularemos que el inicio de sesión es exitoso si el usuario es "admin" y la contraseña es "password"
     if (username === 'Admin' && password === 'password') {

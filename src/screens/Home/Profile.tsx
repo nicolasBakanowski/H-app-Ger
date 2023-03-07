@@ -1,18 +1,23 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/index';
+    const ProfileScreen = () => {
+        const user = useSelector((state: RootState) => state.auth.user);
+      
+        return (
+          <View style={styles.container}>
+            <Image
+              source={{ uri: 'https://picsum.photos/200' }}
+              style={styles.avatar}
+            />
+            <Text style={styles.name}>{user}</Text>
+            <Text style={styles.email}>johndoe@example.com</Text>
+          </View>
+        );
+      };
+      
 
-const ProfileScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Image
-        source={{ uri: 'https://picsum.photos/200' }}
-        style={styles.avatar}
-      />
-      <Text style={styles.name}>John Doe</Text>
-      <Text style={styles.email}>johndoe@example.com</Text>
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   container: {
