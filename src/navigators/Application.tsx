@@ -10,10 +10,8 @@ import { useTheme } from '../hooks';
 import MainNavigator from './Main';
 import { useFlipper } from '@react-navigation/devtools';
 import { ApplicationStackParamList } from '../../@types/navigation';
-import HomeTabs from './tabs/HomeTabs';
 import Login from '../screens/Login/Login'
 import DrawerNavigator from '../components/MenuSlidebar/MenuSlideBar';
-
 const Stack = createStackNavigator<ApplicationStackParamList>();
 
 // @refresh reset
