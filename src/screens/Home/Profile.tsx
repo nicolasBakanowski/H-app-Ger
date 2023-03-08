@@ -17,7 +17,10 @@ const ProfileScreen = ({ navigation }: Props) => {
     const { Layout, Gutters } = useTheme()
     const handleSubmit = () => {
       dispatch(logoutSuccess());
-      navigation.navigate('Login')
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' }],
+      });
     };
     return (
       <View style={styles.container}>
