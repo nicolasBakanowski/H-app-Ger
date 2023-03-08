@@ -11,6 +11,7 @@ import MainNavigator from './Main';
 import { useFlipper } from '@react-navigation/devtools';
 import { ApplicationStackParamList } from '../../@types/navigation';
 import HomeTabs from './tabs/HomeTabs';
+import DrawerNavigator from '../components/MenuSlidebar/MenuSlideBar';
 
 const Stack = createStackNavigator<ApplicationStackParamList>();
 
@@ -28,6 +29,7 @@ const ApplicationNavigator = () => {
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="MenuSlide" component={DrawerNavigator} />
           <Stack.Screen name="Main" component={MainNavigator} />
           <Stack.Screen
             name="Home"
