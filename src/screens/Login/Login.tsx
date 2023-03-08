@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SafeAreaView, View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { loginSuccess, loginFailed } from '../../store/auth/auth'
-
 import { useTheme } from '../../hooks';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../screens/Home/interface'
-
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 type Props = {
@@ -24,7 +22,7 @@ const Login = ({ navigation }: Props) => {
     // En este ejemplo, simularemos que el inicio de sesión es exitoso si el usuario es "admin" y la contraseña es "password"
     if (username === 'Admin' && password === 'password') {
       dispatch(loginSuccess({ username }));
-      navigation.navigate('MenuSlide')
+      navigation.navigate('MenuSlide',undefined)
     } else {
       dispatch(loginFailed('Invalid username or password'));
     }
