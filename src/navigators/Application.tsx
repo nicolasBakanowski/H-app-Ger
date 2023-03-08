@@ -5,7 +5,7 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
-import { Startup } from '../screens';
+import  Home  from '../screens/Home/Home';
 import { useTheme } from '../hooks';
 import MainNavigator from './Main';
 import { useFlipper } from '@react-navigation/devtools';
@@ -30,14 +30,10 @@ const ApplicationNavigator = () => {
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MenuSlide" component={DrawerNavigator} />
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="MenuSlide" component={DrawerNavigator} />
-          <Stack.Screen name="Main" component={MainNavigator} />
-          <Stack.Screen
-            name="Home"
-            component={HomeTabs}
-            options={{ title: 'Inicio' }}
-        />
+        <Stack.Screen name="Main" component={MainNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

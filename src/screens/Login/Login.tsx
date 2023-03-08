@@ -24,7 +24,7 @@ const Login = ({ navigation }: Props) => {
     // En este ejemplo, simularemos que el inicio de sesión es exitoso si el usuario es "admin" y la contraseña es "password"
     if (username === 'Admin' && password === 'password') {
       dispatch(loginSuccess({ username }));
-      navigation.navigate('Home')
+      navigation.navigate('MenuSlide')
     } else {
       dispatch(loginFailed('Invalid username or password'));
     }

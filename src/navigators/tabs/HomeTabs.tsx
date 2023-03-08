@@ -12,17 +12,7 @@ function HomeTabs() {
         <Tab.Screen
         name="Home"
         component={Home}
-        options={{ title: 'Configuración' }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{ title: 'Configuración' }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{ title: 'Perfil' }}
+        options={{ title: 'Home' }}
       />
     </Tab.Navigator>
   );

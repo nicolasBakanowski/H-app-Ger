@@ -1,22 +1,51 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { logoutSuccess } from '../../store/auth/auth'
 import { RootState } from '../../store/index';
-    const ProfileScreen = () => {
-        const user = useSelector((state: RootState) => state.auth.user);
-      
-        return (
-          <View style={styles.container}>
-            <Image
-              source={{ uri: 'https://picsum.photos/200' }}
-              style={styles.avatar}
-            />
-            <Text style={styles.name}>{user}</Text>
-            <Text style={styles.email}>johndoe@example.com</Text>
-          </View>
-        );
-      };
-      
+import { useTheme } from '../../hooks';
+import { RootStackParamList } from '../../screens/Home/interface'
+import { StackNavigationProp } from '@react-navigation/stack';
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
+const ProfileScreen = ({ navigation }: Props) => {
+    const user = useSelector((state: RootState) => state.auth.user);
+    const dispatch = useDispatch();
+    const { Layout, Gutters } = useTheme()
+    const handleSubmit = () => {
+      dispatch(logoutSuccess());
+      navigation.navigate('Login')
+    };
+    return (
+      <View style={styles.container}>
+        <Image
+          source={{ uri: 'https://picsum.photos/200' }}
+          style={styles.avatar}
+        />
+        <Text style={styles.name}>{user}</Text>
+        <Text style={styles.email}>johndoe@example.com</Text>
+        <TouchableOpacity
+          style={[
+            Layout.colCenter,
+            Layout.width250,
+            Layout.height50,
+            Gutters.regularTMargin,
+            {
+              backgroundColor: '#007AFF',
+              borderRadius: 5,
+            },
+            ]}
+            onPress={handleSubmit}
+        >
+      <Text style={[{ color: '#FFFFFF' }]}>Loguout</Text>
+    </TouchableOpacity>
+      </View>
+    );
+};
+  
 
 
 const styles = StyleSheet.create({
