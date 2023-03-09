@@ -35,7 +35,7 @@ const ShowProducts: React.FC<HomeScreenProps> = () => {
   };
 
   return (
-    <View style={{ backgroundColor: '#fff', shadowColor: '#000', MarshadowOpacity: 0.5, shadowRadius: 5, elevation: 5 }}>
+    <View style={{ backgroundColor: '#fff', shadowColor: '#000', shadowRadius: 5, elevation: 5 }}>
       <ScrollView contentContainerStyle={{  flexGrow: 1,padding: 10}}>
         {products.map((product) => (
           <ProductCard
