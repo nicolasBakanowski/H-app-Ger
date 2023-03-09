@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AuthState, LoginPayload } from 'HappGer/src/interfaces/auth';
+import { AuthState, LoginPayload } from 'HappGer/src/store/auth/interface';
 
 export const authSlice = createSlice({
   name: 'auth',
